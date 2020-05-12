@@ -13,9 +13,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // routes
-const routes = require('./routes/index');
-
 app.use(express.static('client/build'));
+
+const routes = require('./routes/index');
 app.use(routes);
 
 app.listen(PORT, function () {
