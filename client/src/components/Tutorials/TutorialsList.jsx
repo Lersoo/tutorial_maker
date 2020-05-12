@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { confirmAlert } from 'react-confirm-alert';
+import styled from 'styled-components';
+
 import API from '../../utils/API';
 import Tutorial from './Tutorial'
-import styled from 'styled-components';
-import { purple } from '../../utils/colors';
+import { Title } from '../shared/Title'
+import { purple, blizzardBlue, satin } from '../../utils/colors';
 
-const Wrapper = styled.section`
-  color: ${purple};
+const Wrapper = styled.div`
+  color: ${blizzardBlue};
 `
 class TutorialsList extends Component {
 
@@ -29,21 +32,33 @@ class TutorialsList extends Component {
   }
 
   deleteTutorial = (tutorialId) => {
-    API.deleteTutorial(tutorialId)
-      .then(response => {
-        console.log(response.data)
-        this.fetchTutorials();
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
+    confirmAlert({
+      title: 'Confirm to submit',
+      message: `Are you sure you want to delete this tutorial?`,
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => API.deleteTutorial(tutorialId)
+            .then(response => {
+              window.location.pathname = '/';
+            })
+            .catch(function (error) {
+              console.log(error);
+            })
+        },
+        {
+          label: 'No',
+          onClick: () => console.log('That was close!')
+        }
+      ]
+    });
   }
 
   render() {
     const { tutorials } = this.state;
     return (
       <Wrapper >
-        <h1> My Tutorials </h1>
+        <Title> My Tutorials </Title>
         {tutorials.map(({ _id, tutorial_title }) => {
           return (
             <Tutorial
@@ -55,6 +70,7 @@ class TutorialsList extends Component {
           )
         })
         }
+        <Tutorial tutorial_title='Create a new tutorial'></Tutorial>
       </Wrapper>
     )
   }

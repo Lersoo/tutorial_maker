@@ -2,19 +2,20 @@ import React, { Component } from 'react'
 import { Link, Switch, Route } from 'react-router-dom'
 import styled from 'styled-components';
 
-import { glaucous, blizzardBlue } from '../utils/colors';
-
+import { glaucous, blizzardBlue, chineseViolet, satin } from '../utils/colors';
+import { Title } from '../components/shared/Title';
 const Wrapper = styled.section`
-  padding: 0 20em;
+  padding: 2em 10em;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${glaucous};
+  background-color: ${satin};
   box-shadow: 5em 0em 2em rgba(0, 0, 0, 0.3);
   height: 20%;
 `
 const NavbarLink = styled(Link)`
   padding: 1em;
+  margin: 0;
   text-decoration: none;
   color: ${blizzardBlue};
   transition: transform 0.4s ease;
@@ -37,9 +38,7 @@ export default class Navbar extends Component {
   render() {
     return (
       <Wrapper>
-        <NavbarLink to='/'>
-          <h1>Tutorial Maker</h1>
-        </NavbarLink>
+        <Title style={{ margin: '0' }}>Tutorial Maker</Title>
         <Switch>
           <Route path='/'>
             <NavbarLink to='/tutorials/new'> Create a Tutorial </NavbarLink>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { purple, orchid } from "../../utils/colors";
+import { purple, satin, blizzardBlue, tumbleweed, candy, darkBlue } from "../../utils/colors";
 
 export const Input = styled.input`
   padding: 1em 2em;
@@ -7,11 +7,12 @@ export const Input = styled.input`
   width: 20em;
   background: none;
   border: none;
-  font-size: 1.5em;
-  border-bottom: 5px solid ${purple};
+  font-size: 1.3em;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
+  color: ${tumbleweed};
   &:focus {
+    color: ${tumbleweed};
     outline: none;
   }
 `
@@ -19,10 +20,50 @@ export const Input = styled.input`
 export const Form = styled.form`
   display: flex;
   justify-content: center;
+  align-items: center;
 `
 
 export const SubmitButton = styled.button`
-  background: ${purple};
+  height: fit-content;
+  background: ${satin};
   border: none;
-  color: ${orchid}
+  color: ${blizzardBlue};
+  padding: 1em 2em;
+  transition: all 0.3s ease;
+  &:hover {
+    background: ${candy};
+    transform: translate(0, -0.3em);
+    cursor: pointer;
+  }
+`
+
+export const TextArea = styled.textarea`
+  padding: 1em  2em;
+  margin: 0 2em;
+  height: 15em;
+  width: 30em;
+  resize: none;
+  background: ${tumbleweed};
+  font-size: 1.5em;
+  border: 1px solid ${tumbleweed};
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  color: ${darkBlue};
+  overflow: auto;
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const Label = styled.label`
+  font-size: 1.2em;
+  color: ${blizzardBlue};
+  margin-bottom: 0.3em;
+  margin-left: 3em;
+`
+
+export const FormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `

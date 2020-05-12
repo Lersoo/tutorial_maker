@@ -10,13 +10,13 @@ import TutorialsList from './components/Tutorials/TutorialsList';
 import ShowTutorial from './components/Tutorials/ShowTutorial';
 import CreateStep from './components/Steps/CreateStep';
 
-import { blizzardBlue, purple } from './utils/colors';
+import { darkBlue, purple, tumbleweed } from './utils/colors';
 
 const Wrapper = styled.section`
-  padding: 0 20%;
-  background: ${blizzardBlue};
-  color: ${purple};
+  background: ${darkBlue};
+  color: ${tumbleweed};
   flex: 1;
+  padding: 2em 10em;
 `
 function App() {
   return (
@@ -35,8 +35,6 @@ function App() {
 }
 
 export default App;
-
-//<Route path="/:id/edit" component={EditTutorial} />
 
 
 // TUTORIAL -- https://medium.com/crowdbotics/deploy-a-mern-stack-app-on-heroku-b0c255744a70

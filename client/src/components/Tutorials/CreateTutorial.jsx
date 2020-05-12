@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import API from '../../utils/API';
 import { Form, Input, SubmitButton } from '../shared/formComponents'
+import { blizzardBlue } from '../../utils/colors';
+import { Title } from '../shared/Title';
 
 export default class CreateTutorial extends Component {
   state = {
@@ -27,11 +29,11 @@ export default class CreateTutorial extends Component {
   render() {
     return (
       <div>
-        <h2>Create a new tutorial</h2>
+        <Title>Create a new tutorial</Title>
         <Form onSubmit={this.onSubmit}>
           <Input
             type='text'
-            placeholder="Enter a name for your tutorial"
+            placeholder="Enter a name for your tutorial..."
             onChange={this.onChangeTutorialTitle}
             value={this.state.tutorial_title}
           />
