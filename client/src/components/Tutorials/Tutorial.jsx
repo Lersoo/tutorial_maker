@@ -55,11 +55,11 @@ class Tutorial extends Component {
     const { _id, tutorial_title, deleteTutorial } = this.props;
     return (
       <Wrapper key={_id} >
-        <TutorialLink to={`/tutorials/${_id}`}>
+        <TutorialLink to={_id ? `/tutorials/${_id}` : '/tutorials/new'}>
           <Title>{tutorial_title}</Title>
         </TutorialLink>
         <div className='tutorial-actions'>
-            <DeleteButton onClick={() => deleteTutorial(_id)} className="material-icons" title="Delete the tutorial">highlight_off
+          <DeleteButton onClick={() => deleteTutorial(_id)} className="material-icons" title="Delete the tutorial">highlight_off
             </DeleteButton>
         </div>
       </Wrapper>

@@ -38,7 +38,9 @@ export default class Navbar extends Component {
   render() {
     return (
       <Wrapper>
-        <Title style={{ margin: '0' }}>Tutorial Maker</Title>
+        <NavbarLink to='/'>
+          <Title style={{ margin: '0' }}>Tutorial Maker</Title>
+        </NavbarLink>
         <Switch>
           <Route path='/'>
             <NavbarLink to='/tutorials/new'> Create a Tutorial </NavbarLink>

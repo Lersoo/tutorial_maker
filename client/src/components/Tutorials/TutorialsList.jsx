@@ -71,6 +71,7 @@ class TutorialsList extends Component {
         })
         }
         <Tutorial
+          url='/tutorials/new'
           tutorial_title='Create a new tutorial' />
       </Wrapper>
     )
