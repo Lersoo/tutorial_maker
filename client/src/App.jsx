@@ -28,7 +28,6 @@ function App() {
           <Route path="/tutorials/new" exact component={CreateTutorial} />
           <Route path="/tutorials/:id/steps/new" component={CreateStep} />
           <Route path="/tutorials/:id" exact component={ShowTutorial} />
-          <Route path="/tutorials/:id/steps/:step_number" exact component={ShowStep} />
         </Switch>
       </Wrapper>
     </Router>
