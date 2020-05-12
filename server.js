@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 // routes
 app.use(express.static('./client/build'));
 
-const routes = require('/home/thomas/code/Lersoo/tutorial_maker/routes/index.js');
+const routes = require('./routes/index');
 app.use(routes);
 
 // cors origin URL - Allow inbound traffic from origin
