@@ -2,34 +2,35 @@ import React, { Component } from 'react'
 import { Link, Switch, Route } from 'react-router-dom'
 import styled from 'styled-components';
 
-import { blueGray, apricot, cadetBlue } from '../utils/colors';
+import { glaucous, blizzardBlue } from '../utils/colors';
 
 const Wrapper = styled.section`
   padding: 0 20em;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${cadetBlue};
+  background-color: ${glaucous};
+  box-shadow: 5em 0em 2em rgba(0, 0, 0, 0.3);
+  height: 20%;
 `
-
-const Title = styled.h1`
-
-`
-
 const NavbarLink = styled(Link)`
   padding: 1em;
   text-decoration: none;
-  color: ${apricot};
+  color: ${blizzardBlue};
   transition: transform 0.4s ease;
   &:hover {
     transform: scale(1.1);
   }
 `
-
 export default class Navbar extends Component {
+  state = {
+    tutorial_id: ''
+  }
+
   renderNewStepLink = () => {
+    const tutorial_id = this.props
     return (
-      <Link to='/tutorials/:id/steps/new'>Add a step</Link>
+      <Link to={`/tutorials/${tutorial_id}/steps/new`}>Add a step</Link>
     )
   }
 
@@ -37,16 +38,16 @@ export default class Navbar extends Component {
     return (
       <Wrapper>
         <NavbarLink to='/'>
-          <Title>Tutorial Maker</Title>
+          <h1>Tutorial Maker</h1>
         </NavbarLink>
         <Switch>
           <Route path='/'>
             <NavbarLink to='/tutorials/new'> Create a Tutorial </NavbarLink>
           </Route>
-          <Route path='/tutorials/:id'>
+          <Route path='/tutorials/:id' exact >
             <NavbarLink to='/'> Home </NavbarLink>
             <NavbarLink to='/tutorials/new'> Create a Tutorial </NavbarLink>
-            <NavbarLink to=''>{this.renderNewStepLink()}</NavbarLink>
+            {this.renderNewStepLink()}
           </Route>
         </Switch>
       </Wrapper>

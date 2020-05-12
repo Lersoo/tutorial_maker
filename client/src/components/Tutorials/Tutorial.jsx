@@ -2,23 +2,25 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { seaGreen } from '../../utils/colors';
+import { seaGreen, orchid, blizzardBlue } from '../../utils/colors';
 
 const Wrapper = styled.section`
-  display: flex;
+  text-align: center;
   padding: 4em;
-  background: ${seaGreen};
-  justify-content: space-between;
+  background: ${orchid};
+  margin: 2em auto;
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.02);
+  }
 `;
 
 const TutorialLink = styled(Link)`
   text-decoration: none;
-  transition: transform 0.3s ease;
-  color: black;
-  &:hover {
-    transform: scale(1.2);
-    color: red;
-  }
+  color: ${blizzardBlue};
+`
+const TutorialActions = styled('div')`
+  display: flex;
 `
 
 class Tutorial extends Component {
@@ -27,9 +29,13 @@ class Tutorial extends Component {
     return (
       <Wrapper key={_id} >
         <TutorialLink to={`/tutorials/${_id}`}>
-          {tutorial_title}
+          <h1>{tutorial_title}</h1>
         </TutorialLink>
-        <TutorialLink onClick={() => deleteTutorial(_id)}>Delete this tutorial</TutorialLink>
+        <div className='tutorial-actions'>
+          <TutorialLink to='' onClick={() => deleteTutorial(_id)}>
+            Delete this tutorial
+        </TutorialLink>
+        </div>
       </Wrapper>
     )
   }

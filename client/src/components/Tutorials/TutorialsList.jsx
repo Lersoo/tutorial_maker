@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import API from '../../utils/API';
 import Tutorial from './Tutorial'
+import styled from 'styled-components';
+import { purple } from '../../utils/colors';
 
+const Wrapper = styled.section`
+  color: ${purple};
+`
 class TutorialsList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tutorials: []
-    }
+
+  state = {
+    tutorials: []
   }
 
   componentDidMount() {
@@ -39,15 +42,20 @@ class TutorialsList extends Component {
   render() {
     const { tutorials } = this.state;
     return (
-      <React.Fragment >
+      <Wrapper >
         <h1> My Tutorials </h1>
         {tutorials.map(({ _id, tutorial_title }) => {
           return (
-            <Tutorial key={_id} _id={_id} tutorial_title={tutorial_title} deleteTutorial={this.deleteTutorial} />
+            <Tutorial
+              key={_id}
+              _id={_id}
+              tutorial_title={tutorial_title}
+              deleteTutorial={this.deleteTutorial}
+            />
           )
         })
         }
-      </React.Fragment>
+      </Wrapper>
     )
   }
 }

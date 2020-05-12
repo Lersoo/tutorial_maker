@@ -2,18 +2,21 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from 'styled-components';
 
+import './App.css'
+
 import Navbar from './components/Navbar';
 import CreateTutorial from './components/Tutorials/CreateTutorial';
 import TutorialsList from './components/Tutorials/TutorialsList';
 import ShowTutorial from './components/Tutorials/ShowTutorial';
 import CreateStep from './components/Steps/CreateStep';
 
-import { greenSheen, apricot } from './utils/colors';
+import { blizzardBlue, purple } from './utils/colors';
 
 const Wrapper = styled.section`
-  padding: 0 30%;
-  background: ${greenSheen};
-  color: ${apricot}
+  padding: 0 20%;
+  background: ${blizzardBlue};
+  color: ${purple};
+  flex: 1;
 `
 function App() {
   return (
@@ -25,6 +28,7 @@ function App() {
           <Route path="/tutorials/new" exact component={CreateTutorial} />
           <Route path="/tutorials/:id/steps/new" component={CreateStep} />
           <Route path="/tutorials/:id" exact component={ShowTutorial} />
+          <Route path="/tutorials/:id/steps/:step_number" exact component={ShowStep} />
         </Switch>
       </Wrapper>
     </Router>

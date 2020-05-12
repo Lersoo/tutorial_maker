@@ -5,12 +5,10 @@ import API from '../../utils/API';
 import Step from '../Steps/Step';
 
 export default class ShowTutorial extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tutorial: {},
-      steps: []
-    }
+
+  state = {
+    tutorial: {},
+    steps: []
   }
 
   componentDidMount() {
@@ -22,7 +20,6 @@ export default class ShowTutorial extends Component {
   fetchTutorial = (tutorialId) => {
     API.fetchTutorial(tutorialId)
       .then(response => {
-        console.log(response);
         this.setState({ tutorial: response.data });
       })
       .catch(function (error) {
@@ -64,7 +61,6 @@ export default class ShowTutorial extends Component {
   }
 
   renderSteps() {
-    console.log(this.state.steps)
     return (
       this.state.steps.map(({ _id, step_description, step_media }) => {
         return (
@@ -81,13 +77,13 @@ export default class ShowTutorial extends Component {
   }
 
   render() {
-    const { tutorial, } = this.state
+    const { tutorial } = this.state
     return (
       <div>
         <h1>{tutorial.tutorial_title}</h1>
         <h2>Steps</h2>
         <Link to={`/tutorials/${tutorial._id}/steps/new`}>Add a step</Link>
-        <Link onClick={() => this.deleteTutorial(tutorial._id)}>Delete this tutorial</Link>
+        <Link to='' onClick={() => this.deleteTutorial(tutorial._id)}>Delete this tutorial</Link>
         <div className="steps">
           {this.renderSteps()}
         </div>

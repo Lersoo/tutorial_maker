@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import API from '../../utils/API';
+import { Form, Input, SubmitButton } from '../shared/formComponents'
 
 export default class CreateTutorial extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      tutorial_title: '',
-      tutorial_steps: []
-    }
+  state = {
+    tutorial_title: '',
+    tutorial_steps: []
   }
 
   onChangeTutorialTitle = (e) => {
@@ -25,22 +22,21 @@ export default class CreateTutorial extends Component {
         window.location.pathname = `/tutorials/${newTutorialId}`;
       })
       .catch(err => console.log(err))
-
   }
 
   render() {
     return (
       <div>
         <h2>Create a new tutorial</h2>
-        <form onSubmit={this.onSubmit}>
-          <input
+        <Form onSubmit={this.onSubmit}>
+          <Input
             type='text'
             placeholder="Enter a name for your tutorial"
             onChange={this.onChangeTutorialTitle}
             value={this.state.tutorial_title}
           />
-          <input type='submit' />
-        </form>
+          <SubmitButton type='submit'> Submit </SubmitButton>
+        </Form>
       </div>
 
     )
