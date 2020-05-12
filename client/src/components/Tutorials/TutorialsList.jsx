@@ -57,7 +57,7 @@ class TutorialsList extends Component {
   render() {
     const { tutorials } = this.state;
     return (
-      <Wrapper >
+      <Wrapper>
         <Title> My Tutorials </Title>
         {tutorials.map(({ _id, tutorial_title }) => {
           return (
@@ -70,7 +70,8 @@ class TutorialsList extends Component {
           )
         })
         }
-        <Tutorial tutorial_title='Create a new tutorial'></Tutorial>
+        <Tutorial
+          tutorial_title='Create a new tutorial' />
       </Wrapper>
     )
   }

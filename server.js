@@ -13,10 +13,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // routes
-app.use(express.static('client/build'));
+app.use(express.static('./client/build'));
 
-const routes = require('./routes/index');
+const routes = require('/home/thomas/code/Lersoo/tutorial_maker/routes/index.js');
 app.use(routes);
+
+// cors origin URL - Allow inbound traffic from origin
+corsOptions = {
+  origin: "Your FrontEnd Website URL",
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+app.use(cors(corsOptions));
 
 app.listen(PORT, function () {
   console.log("Server is running on Port: " + PORT);

@@ -32,7 +32,7 @@ class Step extends Component {
         <LeftSide>
           {step_description}
         </LeftSide>
-        { step_media != '' ?
+        { step_media !== '' ?
         (<img
           src={step_media}
           alt={step_description}

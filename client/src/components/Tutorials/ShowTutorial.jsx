@@ -108,7 +108,7 @@ export default class ShowTutorial extends Component {
   renderSteps = () => {
     console.log(this.state.steps);
     return (
-      this.state.steps != 0
+      this.state.steps !== 0
         ?
         (this.state.steps.map(({ _id, step_description, step_media }) => {
           return (
