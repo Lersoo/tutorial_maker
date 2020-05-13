@@ -5,11 +5,14 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
 // IMPORTS PERSOS
-import { satin, candy, blizzardBlue } from '../../utils/colors';
+import { satin, candy, blizzardBlue, darkBlue, blizzardBlueTransparent } from '../../utils/colors';
 import { Title } from '../shared/Title';
 import { Icon } from '../../utils/icons';
 import API from '../../utils/API';
 import Step from '../Steps/Step';
+import CreateStep from '../Steps/CreateStep';
+import { Button } from '../shared/formComponents'
+import { TitleContainer, StepsContainer } from '../shared/containers';
 
 const Wrapper = styled('div')`
   text-align: center;
@@ -23,11 +26,14 @@ const AddButton = styled(Link)`
     color: ${candy};
   }
 `
+
+
 export default class ShowTutorial extends Component {
 
   state = {
     tutorial: {},
-    steps: []
+    steps: [],
+    newStep: false
   }
 
   componentDidMount() {
@@ -140,29 +146,39 @@ export default class ShowTutorial extends Component {
     )
   }
 
+  cancelStepCreation = () => {
+    this.setState({ newStep: false });
+  }
+
   render() {
     const { tutorial } = this.state
     return (
       <Wrapper>
-        <Title>Tutorial - {tutorial.tutorial_title}</Title>
-        <div>{this.renderAnchors()}</div>
-        <div className="steps">
+        <TitleContainer>
+          <Title>Tutorial - {tutorial.tutorial_title}</Title>
+          <Button
+            onClick={() => this.deleteTutorial(tutorial._id)}
+            title='Delete this tutorial'
+          >
+            Delete this tutorial
+          </Button>
+        </TitleContainer>
+
+        {/* <div>{this.renderAnchors()}</div> */}
+
+        <StepsContainer>
           {this.renderSteps()}
-        </div>
-        <AddButton
-          to={`/tutorials/${tutorial._id}/steps/new`}
-          title='Add a step'
-        >
-          <Icon className="material-icons">add_circle</Icon>
-        </AddButton>
+        </StepsContainer>
+
+        {this.state.newStep === true && <CreateStep match={this.props.match} cancelStepCreation={this.cancelStepCreation} />}
+
+        {this.state.newStep === false &&
+          <Button onClick={() => this.setState({ newStep: true })}>
+            Add a step
+          </Button>
+        }
+
         <br />
-        <Icon
-          className="material-icons"
-          onClick={() => this.deleteTutorial(tutorial._id)}
-          title='Delete this tutorial'
-        >
-          highlight_off
-          </Icon>
       </Wrapper>
     )
   }

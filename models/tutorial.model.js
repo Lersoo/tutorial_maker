@@ -8,6 +8,6 @@ let TutorialSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Step'
   }]
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Tutorial', TutorialSchema);

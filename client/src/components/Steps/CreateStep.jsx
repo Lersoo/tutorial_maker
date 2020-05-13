@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import API from '../../utils/API';
-import { Form, Input, SubmitButton, TextArea, Label, FormWrapper } from '../shared/formComponents'
+import { Form, Input, SubmitButton, TextArea, Label, FormWrapper, Button } from '../shared/formComponents'
 import { blizzardBlue } from '../../utils/colors'
-
+import { Title } from '../shared/Title'
+import { TitleContainer } from '../shared/containers'
 export default class CreateStep extends Component {
   state = {
     step_description: '',
@@ -24,7 +25,8 @@ export default class CreateStep extends Component {
     this.uploadFile(mediaFile);
   }
 
-  uploadFile(file) {
+  uploadFile = (file) => {
+    console.log(this.props)
     const tutorialID = this.props.match.params.id;
     const cloudName = 'dimzs5mei';
     const url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
@@ -65,7 +67,9 @@ export default class CreateStep extends Component {
     API.createStep(tutorialID, newStep)
       .then(res => {
         console.log(res)
-        window.location.href = `/tutorials/${tutorialID}`
+        if (window.location.href !== `/tutorials/${tutorialID}`) {
+          window.location.href = `/tutorials/${tutorialID}`;
+        }
       })
       .catch(err => console.log(err))
   }
@@ -73,7 +77,12 @@ export default class CreateStep extends Component {
   render() {
     return (
       <div>
-        <h1 style={{ color: blizzardBlue, marginBottom: '2em' }}>Create a new tutorial</h1>
+        <TitleContainer>
+          <Title>Add a new step</Title>
+          <Button onClick={this.props.cancelStepCreation}>
+            Cancel
+          </Button>
+        </TitleContainer>
         <Form onSubmit={this.onSubmit}>
           <FormWrapper>
             <Label>

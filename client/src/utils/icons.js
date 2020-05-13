@@ -6,6 +6,7 @@ export const emptyCircle = '<span class="material-icons"> panorama_fish_eye </sp
 
 export const Icon = styled.span`
   color: ${satin};
+  font-size: ${props => props.size || '24px' };
   &:hover {
     color: ${candy};
     cursor: pointer;

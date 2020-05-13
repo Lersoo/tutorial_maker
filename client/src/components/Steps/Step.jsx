@@ -4,11 +4,16 @@ import { satin, blizzardBlueTransparent, blizzardBlue } from '../../utils/colors
 import { Icon } from '../../utils/icons';
 
 export const StepWrapper = styled.div`
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2em;
-  border-bottom: 1px solid ${satin};
+  ${'' /* border-bottom: 1px solid ${satin}; */}
+  transition: all .3s ease;
+  &:hover {
+    background-color: ${blizzardBlueTransparent(.1)};
+  }
 `;
 
 const LeftSide = styled.div`
@@ -19,9 +24,9 @@ const LeftSide = styled.div`
   max-width: 30%;
   min-height: 10em;
   text-align: right;
-  background-color: ${blizzardBlueTransparent};
+  background-color: ${blizzardBlueTransparent()};
   color: ${blizzardBlue};
-  padding-right: 5em;
+  padding: 0 5em;
 `;
 
 class Step extends Component {
@@ -44,8 +49,9 @@ class Step extends Component {
             className="material-icons"
             onClick={() => deleteStep(_id)}
             title='Delete this step'
+            size='40px'
           >
-            highlight_off
+            clear
         </Icon>
         </div>
       </StepWrapper>

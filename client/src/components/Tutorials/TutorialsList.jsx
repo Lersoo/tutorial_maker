@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import API from '../../utils/API';
 import Tutorial from './Tutorial'
 import { Title } from '../shared/Title'
-import { purple, blizzardBlue, satin } from '../../utils/colors';
+import { blizzardBlue, satin } from '../../utils/colors';
 
 const Wrapper = styled.div`
   color: ${blizzardBlue};
