@@ -7,8 +7,7 @@ import { Icon } from '../../utils/icons';
 import { Title } from '../shared/Title';
 
 const Wrapper = styled.div`
-  min-width: 30%;
-  width: fit-content;
+  width: 40%;
   text-align: center;
   padding: 4em 8em;
   background: ${satin};
@@ -36,8 +35,8 @@ const DeleteButton = styled.span`
   text-decoration: none;
   color: ${blizzardBlue};
   position: absolute;
-  top: 2em;
-  right: 2em;
+  top: 1em;
+  right: 1em;
   transition: all 0.3s ease;
   &:hover {
     cursor: pointer;
