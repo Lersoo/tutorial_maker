@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { purple, satin, blizzardBlue, tumbleweed, candy, darkBlue } from "../../utils/colors";
+import { satin, blizzardBlue, blizzardBlueTransparent, tumbleweed, candy, darkBlue } from "../../utils/colors";
 
 export const Input = styled.input`
   padding: 1em 2em;
@@ -66,4 +66,20 @@ export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+`
+
+export const Button = styled.button`
+  background-color: ${blizzardBlueTransparent(.1)};
+  color: ${blizzardBlue};
+  border: ${satin};
+  padding: 1em 1.5em;
+  transition: all .3s ease;
+  border-radius: .7em;
+  &:hover {
+    cursor: pointer;
+    background-color: ${blizzardBlueTransparent()};
+  }
+  &:focus {
+    outline: none;
+  }
 `

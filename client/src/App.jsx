@@ -10,7 +10,7 @@ import TutorialsList from './components/Tutorials/TutorialsList';
 import ShowTutorial from './components/Tutorials/ShowTutorial';
 import CreateStep from './components/Steps/CreateStep';
 
-import { darkBlue, purple, tumbleweed } from './utils/colors';
+import { darkBlue, tumbleweed } from './utils/colors';
 
 const Wrapper = styled.section`
   background: ${darkBlue};

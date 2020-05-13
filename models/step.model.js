@@ -12,6 +12,6 @@ let StepSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Tutorial'
   }
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Step', StepSchema);
